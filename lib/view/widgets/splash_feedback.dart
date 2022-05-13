@@ -10,15 +10,14 @@ class SplashFeedback extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-        padding: const EdgeInsets.all(25),
+        padding: const EdgeInsets.all(35),
         alignment: Alignment.center,
-        height: 180,
-        width: 250,
+        height: 350,
+        width: double.infinity,
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            const CircularProgressIndicator(
-              color: Colors.deepOrange,
-            ),
+            _getLoadingWidget(),
             const SizedBox(
               height: 35,
             ),
@@ -33,6 +32,7 @@ class SplashFeedback extends StatelessWidget {
                         blurRadius: 3.0,
                         offset: Offset(2.0, 2.0))
                   ]),
+              textAlign: TextAlign.center,
             ),
           ],
         ));
@@ -43,6 +43,17 @@ class SplashFeedback extends StatelessWidget {
       return Strings.splashLoading;
     } else {
       return Strings.splashError;
+    }
+  }
+
+  Widget _getLoadingWidget() {
+    if (state == SplashFeedbackState.loading) {
+      return const Image(
+          height: 50,
+          width: 50,
+          image: AssetImage('assets/character_walking.gif'));
+    } else {
+      return Container(height: 0);
     }
   }
 }

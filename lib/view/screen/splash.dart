@@ -29,7 +29,7 @@ class _SplashScreenState extends State<SplashScreen> {
     return Container(
         width: double.infinity,
         height: double.infinity,
-        color: Colors.amber,
+        color: Colors.orangeAccent,
         alignment: Alignment.center,
         child: const SplashFeedback());
   }
