@@ -1,0 +1,4 @@
+#Thu May 12 15:39:24 PDT 2022
+base.0=/Users/caballep/Development/flutter_projects/poke_flutter/build/app/intermediates/dex/debug/mergeDexDebug/classes.dex
+renamed.0=classes.dex
+path.0=classes.dex
