@@ -1,0 +1,17 @@
+import 'dart:convert';
+
+import 'package:http/http.dart' as http;
+import 'package:poke_flutter/source/entity/pokemon.dart';
+
+class PokemonRemote {
+  Future<Pokemon> fetchPokemon(int number) async {
+    final response =
+        await http.get(Uri.parse('https://pokeapi.co/api/v2/pokemon/$number'));
+
+    if (response.statusCode == 200) {
+      return Pokemon.fromJson(jsonDecode(response.body));
+    } else {
+      throw Exception('Failed to load pokemon #$number');
+    }
+  }
+}

@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:poke_flutter/repo/pokemon_repo.dart';
+import 'package:poke_flutter/source/remote/pokemon_remote.dart';
 import 'package:poke_flutter/view/screen/profile_creation.dart';
 import 'package:poke_flutter/view/widgets/splash_feedback.dart';
 
@@ -16,12 +18,20 @@ class _SplashScreenState extends State<SplashScreen> {
   void initState() {
     super.initState();
 
-    temporalFuture
+    PokemonRepo()
+        .getPokemons2()
         .then((value) => Navigator.push(context,
             MaterialPageRoute(builder: (context) => const ProfileCreation())))
         .catchError((error) => setState(() {
               splashFeedbackState = SplashFeedbackState.error;
             }));
+
+    // temporalFuture
+    //     .then((value) => Navigator.push(context,
+    //         MaterialPageRoute(builder: (context) => const ProfileCreation())))
+    //     .catchError((error) => setState(() {
+    //           splashFeedbackState = SplashFeedbackState.error;
+    //         }));
   }
 
   @override
